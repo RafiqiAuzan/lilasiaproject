@@ -3,6 +3,7 @@ import App from './App.vue';
 import store from './store'; 
 import router from './router.js'; 
 import './index.css'
+import 'flowbite';
 
 const app = createApp(App)
 
