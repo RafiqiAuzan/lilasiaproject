@@ -1,32 +1,59 @@
 <template>
-  <div class="product-list">
-    <ul>
-      <li class="product-item" v-for="product in products" :key="product.id">
-        <span class="product-name">{{ product.product_name }}</span>
-
-        <div class="action-links">
-          <router-link
-            class="edit-link"
-            :to="{ name: 'EditProduct', params: { id: product.id } }"
-            >Edit</router-link
-          >
-
-          <router-link
-            class="details-link"
-            :to="{ name: 'ProductDetails', params: { id: product.id } }"
-            >View Details</router-link
-          >
-
-          <button class="delete-button" @click="deleteProduct(product.id)">
-            Delete
-          </button>
+  <section class="lg:grid">
+    <div class="pt-[84px] lg:pt-0 lg:order-last">
+      <div class="container mx-auto py-8 lg:py-0 lg:pt-16">
+        <router-link
+          class="block mx-auto w-32 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
+          to="/add-product" v-if="isLoggedIn">Add Product</router-link>
+        <div class="">
+          <div class="mx-auto mt-10 w-[750px] relative overflow-x-auto shadow-md sm:rounded-lg">
+            <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+              <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+                <tr>
+                  <th scope="col" class="px-6 py-3">
+                    Product name
+                  </th>
+                  <th scope="col" class="px-6 py-3">
+                    Category
+                  </th>
+                  <th scope="col" class="px-6 py-3">
+                    Price
+                  </th>
+                  <th scope="col" class="px-6 py-3">
+                  </th>
+                </tr>
+              </thead>
+              <tbody v-for="product in products" :key="product.id">
+                <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                  <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                    {{ product.product_name }}
+                  </th>
+                  <td class="px-6 py-4">
+                    {{ product.product_category }}
+                  </td>
+                  <td class="px-6 py-4">
+                    IDR {{ product.product_price }}
+                  </td>
+                  <td class="px-6 py-4">
+                    <router-link class="edit-link font-medium text-blue-600 dark:text-blue-500 hover:underline"
+                      :to="{ name: 'EditProduct', params: { id: product.id } }">Edit</router-link>
+                    <router-link class="details-link" :to="{ name: 'ProductDetails', params: { id: product.id } }">View
+                      Details</router-link>
+                    <button class="delete-button" @click="deleteProduct(product.id)">Delete</button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
         </div>
-      </li>
-    </ul>
-  </div>
 
-  <router-link to="/add-product" v-if="isLoggedIn">Add Product</router-link>
-</template>
+      </div>
+    </div>
+  </section>
+</template>  
+
+
+
 
 <script>
 import axios from "@/axios";
@@ -67,57 +94,3 @@ export default {
 };
 </script>
 
-<style scoped>
-.product-list {
-  max-width: 800px;
-  margin: 0 auto;
-  padding: 20px;
-  background-color: #f9f9f9;
-  border-radius: 8px;
-}
-
-.product-item {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 10px;
-  margin: 8px 0;
-  border-bottom: 1px solid #ddd;
-}
-
-.product-name {
-  font-weight: bold;
-  font-size: 1.1em;
-}
-
-.action-links {
-  display: flex;
-  align-items: center;
-}
-
-.edit-link,
-.details-link,
-.delete-button {
-  margin: 0 8px;
-  font-size: 0.9em;
-}
-
-.edit-link,
-.details-link {
-  text-decoration: none;
-  color: #337ab7;
-}
-
-.delete-button {
-  padding: 5px 10px;
-  background-color: #f44336;
-  color: #fff;
-  border: none;
-  border-radius: 4px;
-}
-
-.delete-button:hover {
-  background-color: #d32f2f;
-  cursor: pointer;
-}
-</style>
