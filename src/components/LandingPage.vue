@@ -1,3 +1,22 @@
+<!-- <template>
+    <div>
+        <img :src="getImageUrl('tes.jpg')" alt="Produasct Image">
+    </div>
+</template>
+
+<script>
+export default {
+    methods: {
+        getImageUrl(imagePath) {
+    // Ganti baseUrl sesuai dengan URL proyek Laravel Anda
+    const baseUrl = 'http://localhost/LilasiaProjectAPI/public/storage/product_image/';
+
+    return baseUrl + imagePath;
+},
+    },
+};
+</script> -->
+
 <template>
     <div class="container mx-auto mt-16">
         <!-- Search -->
@@ -60,11 +79,11 @@
         <div class="grid grid-cols-4 mt-6 gap-10">
             <div v-for="product in filteredProducts" :key="product.id"
                 class="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 p-5">
-                <a href="#">
-                    <img class="rounded-t-lg" :src="'data:image/jpeg;base64,' + product.product_image" alt="" />
+                <a :href="product.link">
+                        <img :src="'http://localhost/LilasiaProjectAPI/public/storage/product_image/' + product.product_image" alt="" />
                 </a>
                 <div class="p-5">
-                    <a href="#" :href="product.link">
+                    <a :href="product.link">
                         <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
                             {{ product.product_name }}
                         </h5>
@@ -100,6 +119,12 @@ export default {
         };
     },
     methods: {
+        getImageUrl(imagePath) {
+    // Ganti baseUrl sesuai dengan URL proyek Laravel Anda
+    const baseUrl = this.products = response.data;;
+
+    return baseUrl + imagePath;
+},
         async searchByCategory() {
             try {
                 const response = await axios.get("http://localhost:8000/api/products", {
