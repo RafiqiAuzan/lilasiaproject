@@ -1,11 +1,11 @@
 import { createRouter, createWebHistory } from 'vue-router';
 
 
-import ProductList from './components/ProductList.vue';
-import LandingPage from './components/LandingPage.vue';
-import ProductDetails from './components/ProductDetails.vue';
-import AddProduct from './components/AddProduct.vue';
-import EditProduct from './components/EditProduct.vue';
+import productlist from './pages/productlist.vue';
+import landing from './pages/landing.vue';
+import productdetails from './pages/productdetails.vue';
+import addproduct from './pages/addproduct.vue';
+import editproduct from './pages/editproduct.vue';
 import Login from './components/Login.vue'; // Import the Login component
 import Register from './components/Register.vue'; // Import the Register component
 
@@ -13,32 +13,32 @@ import Register from './components/Register.vue'; // Import the Register compone
 const routes = [
 {
 path: '/',
-name: 'LandingPage',
-component: LandingPage,
+name: 'landing',
+component: landing,
 meta: { public: false } // Mark this route as private
 },
 {
 path: '/dashboard',
-name: 'ProductList',
-component: ProductList,
+name: 'productlist',
+component: productlist,
 meta: { admin: true } // Mark this route as private
 },
 {
-path: '/product/:id',
-name: 'ProductDetails',
-component: ProductDetails,
+path: '/productdetails/:id',
+name: 'productdetails',
+component: productdetails,
 meta: { public: false } // Mark this route as private
 },
 {
 path: '/add-product',
-name: 'AddProduct',
-component: AddProduct,
+name: 'addproduct',
+component: addproduct,
 meta: { public: false } // Mark this route as private
 },
 {
 path: '/edit-product/:id',
-name: 'EditProduct',
-component: EditProduct,
+name: 'editproduct',
+component: editproduct,
 meta: { public: false } // Mark this route as private
 },
 {

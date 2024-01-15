@@ -37,7 +37,7 @@
                   <td class="px-6 py-4">
                     <router-link class="edit-link font-medium text-blue-600 dark:text-blue-500 hover:underline"
                       :to="{ name: 'EditProduct', params: { id: product.id } }">Edit</router-link>
-                    <router-link class="details-link" :to="{ name: 'ProductDetails', params: { id: product.id } }">View
+                    <router-link class="details-link" :to="{ name: 'productdetails', params: { id: product.id } }">View
                       Details</router-link>
                     <button class="delete-button" @click="deleteProduct(product.id)">Delete</button>
                   </td>
