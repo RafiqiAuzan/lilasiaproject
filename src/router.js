@@ -6,8 +6,8 @@ import landing from './pages/landing.vue';
 import productdetails from './pages/productdetails.vue';
 import addproduct from './pages/addproduct.vue';
 import editproduct from './pages/editproduct.vue';
-import Login from './components/Login.vue'; // Import the Login component
-import Register from './components/Register.vue'; // Import the Register component
+import login from './pages/auth/login.vue'; // Import the Login component
+import register from './pages/auth/register.vue'; // Import the Register component
 
 
 const routes = [
@@ -43,14 +43,14 @@ meta: { public: false } // Mark this route as private
 },
 {
 path: '/login', // Add this route
-name: 'Login',
-component: Login,
+name: 'login',
+component: login,
 meta: { public: true } // Mark this route as public
 },
 {
 path: '/register', // Add this route
-name: 'Register',
-component: Register,
+name: 'register',
+component: register,
 meta: { public: true } // Mark this route as public
 }
 ];
