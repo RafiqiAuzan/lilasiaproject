@@ -70,7 +70,7 @@ const isAdmin = localStorage.getItem('role') === 'admin';
 
 if (!to.meta.public && !isAuthenticated) {
     // If the route is not public and the user is not authenticated, redirect to login
-    next({ name: 'Login' });
+    next({ name: 'login' });
 } else if (to.meta.requiresAdmin && !isAdmin) {
     // If the route requires admin role and the user is not admin, redirect to another route or show an error
     next('/'); // Change this to the route you want to redirect to if not admin

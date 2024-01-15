@@ -23,7 +23,7 @@ export default createStore({
             dispatch('navigateToLogin')
         },
         navigateToLogin() {
-            router.push({name: 'Login'})
+            router.push({name: 'login'})
         }
     }
 })
